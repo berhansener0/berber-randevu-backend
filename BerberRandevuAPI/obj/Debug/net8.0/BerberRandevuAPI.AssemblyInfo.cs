@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("BerberRandevuAPI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+20e4251734f14ff707ef5a911b7e2e2bc1cb7caa")]
 [assembly: System.Reflection.AssemblyProductAttribute("BerberRandevuAPI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("BerberRandevuAPI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

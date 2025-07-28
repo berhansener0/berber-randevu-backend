@@ -10,6 +10,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Security.Cryptography.X509Certificates;
 using System.Security.Claims;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
+using AutoMapper;
 
 namespace BerberRandevuAPI.Controllers
 {
@@ -18,10 +19,12 @@ namespace BerberRandevuAPI.Controllers
     public class AppointmentController : ControllerBase
     {
         private readonly BerberContext _context;
+        private readonly IMapper _mapper;
 
-        public AppointmentController(BerberContext context)
+        public AppointmentController(BerberContext context,IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -129,7 +132,7 @@ namespace BerberRandevuAPI.Controllers
 
             var appointments = await _context.Appointments
                 .Where(a => a.UserId == userId)
-                .Include(a => a.BarberId)
+                .Include(a => a.Barber)
                 .Select(a => new AppointmentReadDTO
                 {
                     AppointmentId = a.AppointmentId,
@@ -272,14 +275,17 @@ namespace BerberRandevuAPI.Controllers
                 .Include(a => a.User)
                 .ToListAsync();
 
-            var result = appointments.Select(a => new AppointmentReadDTO
-            {
-                AppointmentId = a.AppointmentId,
-                UserName = a.User.Name,
-                AppointmentDate = a.AppointmentDate,
-                StartTime = a.StartTime,
-                Status = a.Status,
-            });
+            var result = _mapper.Map<List<AppointmentReadDTO>>(appointments);
+
+            //var result = appointments.Select(a => new AppointmentReadDTO
+            //{
+            //    AppointmentId = a.AppointmentId,
+            //    UserName = a.User.Name,
+            //    UserId = a.UserId,
+            //    AppointmentDate = a.AppointmentDate,
+            //    StartTime = a.StartTime,
+            //    Status = a.Status,
+            //});
 
             return Ok(result);
         }

@@ -144,3 +144,6 @@ C:\Users\umpg5000954\Desktop\berber randevu projesi\BerberRandevuAPI\BerberRande
 C:\Users\umpg5000954\Desktop\berber randevu projesi\BerberRandevuAPI\BerberRandevuAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\umpg5000954\Desktop\berber randevu projesi\BerberRandevuAPI\BerberRandevuAPI\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\umpg5000954\Desktop\berber randevu projesi\BerberRandevuAPI\BerberRandevuAPI\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll
+C:\Users\umpg5000954\Desktop\berber randevu projesi\BerberRandevuAPI\BerberRandevuAPI\obj\Debug\net8.0\BerberRandevuAPI.sourcelink.json
+C:\Users\umpg5000954\Desktop\berber randevu projesi\BerberRandevuAPI\BerberRandevuAPI\bin\Debug\net8.0\AutoMapper.dll
+C:\Users\umpg5000954\Desktop\berber randevu projesi\BerberRandevuAPI\BerberRandevuAPI\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
