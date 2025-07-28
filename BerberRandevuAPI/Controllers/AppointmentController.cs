@@ -290,7 +290,11 @@ namespace BerberRandevuAPI.Controllers
             return Ok(result);
         }
 
+        //[HttpPut("barber/{id}/appointments/status")]
+        //public async Task<ActionResult<>
+
     }
+
 
 }
 
