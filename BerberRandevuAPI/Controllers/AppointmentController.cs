@@ -152,6 +152,25 @@ namespace BerberRandevuAPI.Controllers
             return Ok(appointments);
         }
 
+        [Authorize(Roles="Barber")]
+        [HttpGet("barber/appointments/status")]
+        public async Task<ActionResult<IEnumerable<AppointmentReadDTO>>> GetByStatus([FromQuery] string status)
+        {
+            var barberIdClaim = User.Claims.FirstOrDefault(b => b.Type == "BarberId");
+            if (barberIdClaim == null)
+                return Unauthorized();
+
+            int barberId = int.Parse(barberIdClaim.Value);
+
+            var appointments = await _context.Appointments
+                .Where(a => a.BarberId == barberId && a.Status== status)
+                .Include(a=>a.User)
+                .ToListAsync();
+            
+            var result = _mapper.Map<List<AppointmentReadDTO>>(appointments);
+            return Ok(result);
+        }
+
         [Authorize("Roles=Barber")]
         [HttpGet("barber/myappointments")]
         public async Task<ActionResult<IEnumerable<AppointmentReadDTO>>> GetBarberAppointments()
@@ -268,7 +287,9 @@ namespace BerberRandevuAPI.Controllers
         }
 
         [HttpGet("barber/{barberId}/appointments")]
-        public async Task<ActionResult<IEnumerable<AppointmentReadDTO>>> GetAppointmentsForBarber(int barberId)
+        public async Task<ActionResult<IEnumerable<AppointmentReadDTO>>> GetAppointmentsForBarber(
+            int barberId,
+            [FromQuery] string? status)
         {
             var appointments = await _context.Appointments
                 .Where(a => a.BarberId == barberId)
@@ -290,8 +311,18 @@ namespace BerberRandevuAPI.Controllers
             return Ok(result);
         }
 
-        //[HttpPut("barber/{id}/appointments/status")]
-        //public async Task<ActionResult<>
+        //[HttpGet("barber/appointments/status")]
+        //public async Task<ActionResult<IEnumerable<AppointmentReadDTO>>> GetByStatus (int barberId, [FromQuery] string status)
+        //{
+        //    var appointments = await _context.Appointments
+        //        .Where(a=>a.BarberId == barberId&&a.Status==status)
+        //        .Include (a => a.User)  
+        //        .ToListAsync();
+
+        //    var result = _mapper.Map<List<AppointmentReadDTO>>(appointments); 
+        //    return Ok(result);
+        //}
+
 
     }
 

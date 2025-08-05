@@ -110,6 +110,37 @@
         "Name": "barberId",
         "Type": "System.Int32",
         "IsRequired": true
+      },
+      {
+        "Name": "status",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[BerberRandevuAPI.Models.DTOs.AppointmentReadDTO, BerberRandevuAPI, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "BerberRandevuAPI.Controllers.AppointmentController",
+    "Method": "GetByStatus",
+    "RelativePath": "api/Appointment/barber/appointments/status",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "status",
+        "Type": "System.String",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
