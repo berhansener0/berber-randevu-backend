@@ -156,7 +156,7 @@ namespace BerberRandevuAPI.Controllers
         [HttpGet("barber/appointments/status")]
         public async Task<ActionResult<IEnumerable<AppointmentReadDTO>>> GetByStatus([FromQuery] string status)
         {
-            var barberIdClaim = User.Claims.FirstOrDefault(b => b.Type == "barberId");
+            var barberIdClaim = User.Claims.FirstOrDefault(b => b.Type == "barberId" || b.Type=="BarberId" || b.Type=="userId");
             if (barberIdClaim == null)
                 return Unauthorized();
 
